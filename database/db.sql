@@ -4,7 +4,7 @@ USE atividade_7;
 CREATE TABLE usuario (
     idUser INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR (87) NOT NULL,
-    e-mail VARCHAR(254) NOT NULL UNIQUE
+    email VARCHAR(254) NOT NULL UNIQUE
 )
 
 CREATE TABLE pratos (
@@ -12,4 +12,6 @@ CREATE TABLE pratos (
     nomePrato VARCHAR (87),
     preco FLOAT,
     categoria ENUM('principal','sobremesa','bebida')
+    idUser
+    CONSTRAINT fk_usuario_pratos FOREIGN KEY (idUser) REFERENCES usuario(idUser)
 )

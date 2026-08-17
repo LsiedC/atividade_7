@@ -9,9 +9,9 @@ CREATE TABLE usuario (
 
 CREATE TABLE pratos (
     idPrato INT AUTO_INCREMENT PRIMARY KEY,
-    nomePrato VARCHAR(87),
-    preco FLOAT,
-    categoria ENUM('principal','sobremesa','bebida'),
+    nomePrato VARCHAR(87) NOT NULL,
+    preco FLOAT NOT NULL,
+    categoria ENUM('principal','sobremesa','bebida') NOT NULL,
     idUser INT,
     CONSTRAINT fk_usuario_pratos 
         FOREIGN KEY (idUser) REFERENCES usuario(idUser)

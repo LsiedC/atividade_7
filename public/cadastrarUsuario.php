@@ -12,5 +12,16 @@ include "../infra/conexao.php";
     <main>
         <a href="menuPrincipal.php">Voltar para tela principal</a>
     </main>
+    <form action="POST">
+
+        <input type="text"> 
+        <br>
+        <input type="text"> 
+        <br>
+        <input type="text"> 
+        
+       <br> 
+       <button type="submit"> Enviar </button> 
+    </form>
 </body>
 </html>

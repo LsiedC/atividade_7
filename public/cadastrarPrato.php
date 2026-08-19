@@ -1,9 +1,16 @@
 <?php
 include "../infra/conexao.php";
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
 $nomePrato = $_POST["nomePrato"];
 $preco = $_POST["preco"];
 $categoria = $_POST["categoria"];
+
+$sql = "INSERT INTO pratos (nomePrato, preco, categoria) VALUES('$nomePrato', '$preco', '$categoria')";
+
+mysqli_query($conexao, $sql);
+
+}
 
 ?>
 
@@ -20,11 +27,11 @@ $categoria = $_POST["categoria"];
     </main>
     <form action="" method = "POST">
 
-        <input type="text" name = "nomePrato"> 
+        <input type="text" id = "nomePrato" name= "nomePrato"> 
         <br>
-        <input type="text" name = "preco"> 
+        <input type="text" id = "preco" name = "preco"> 
         <br>
-        <select name="categoria" id="">
+        <select id ="categoria" name = "categoria">
         <option value="Principal">Principal</option>
         <option value="Sobremesa">Sobremesa</option>
         <option value="Bebida">Bebida</option>

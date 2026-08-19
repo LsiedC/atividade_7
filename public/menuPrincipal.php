@@ -1,13 +1,6 @@
 <?php
 include "../infra/conexao.php";
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-$nome = $_POST["nome"];
-$email = $_POST["email"];
 
-$sql = "INSERT INTO usuario(nome, email) VALUES('$nome','$email')";
-mysqli_query($conexao, $sql);
-
-}
 $pratos = mysqli_query($conexao, "SELECT * FROM pratos");
 $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
 
@@ -21,34 +14,15 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
 </head>
 <body>
     <main>
-        <h1>O que você deseja fazer? </h1>
-        <h3>Cadastrar Usuario</h3>
-            <form action="" method="POST">
-            
-            <label for="nome">Nome:</label>
-
-            <br>
-            <input type="text" placeholder="Lucas" id="nome" name="nome" required> 
-            <br>
-
-            <label for="email">E-mail:</label>
-
-            <br>
-            <input type="text" placeholder="venso@gmail" id="email" name="email" required> 
-            <br> 
-            <br>
-            <button type="submit"> Enviar </button> 
-        </form>
- 
-
-
-
-
-
+        <h1>O que você deseja fazer?</h1>
+        <a href="cadastrarUsuario.php">Cadastrar Usuario</a>
         <br>
         <br>
-        
         <a href="cadastrarPrato.php">Cadastrar Prato</a>
+        <br>
+        <br>
+        <a href="listarPratoUsuario.php">Listar Pratos por Usuario</a>
+        <br>
         <br>
         <?phpinclude "listarPrato.php";?>
         <br>
@@ -82,7 +56,6 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
 
             </table>
         <br>
-        <a href="listarPratoUsuario.php">Listar Pratos por Usuario</a>
         <br>
         
 

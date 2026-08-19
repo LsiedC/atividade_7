@@ -39,7 +39,13 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
             <br>
             <button type="submit"> Enviar </button> 
         </form>
+ 
 
+
+
+
+
+        <br>
         <br>
         
         <a href="cadastrarPrato.php">Cadastrar Prato</a>

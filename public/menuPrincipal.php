@@ -1,22 +1,10 @@
 <?php
 include "../infra/conexao.php";
-
 if($_SERVER["REQUEST_METHOD"] == "POST"){
 $nome = $_POST["nome"];
 $email = $_POST["email"];
 
 $sql = "INSERT INTO usuario(nome, email) VALUES('$nome','$email')";
-mysqli_query($conexao, $sql);
-
-}
-
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-$nomePrato = $_POST["nomePrato"];
-$preco = $_POST["preco"];
-$categoria = $_POST["categoria"];
-
-$sql = "INSERT INTO pratos (nomePrato, preco, categoria) VALUES('$nomePrato', '$preco', '$categoria')";
-
 mysqli_query($conexao, $sql);
 
 }
@@ -53,31 +41,10 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
         </form>
 
         <br>
-        <h3>Cadastrar Prato</h3>
-            <form action="" method = "POST">
-
-            <label for="nomePrato">Nome:</label>
-            <br>
-            <input type="text" placeholder="Frango" id = "nomePrato" name= "nomePrato"> 
-            <br>
-            <label for="nomePrato">Preço:</label>
-            <br>
-            <input type="int" id = "preco" placeholder="99,99" name = "preco"> 
-            <br>
-            <label for="categoria">Tipo do prato:</label>
-            <br>
-            <select id ="categoria" name = "categoria">
-            <option value="Principal">Principal</option>
-            <option value="Sobremesa">Sobremesa</option>
-            <option value="Bebida">Bebida</option>
-            </select>
-            <br> 
-            <br>
-            <button type="submit"> Enviar </button> 
-            </form>
-        <br>
         
-        <a href="listarPrato.php">Listar Pratos</a>
+        <a href="cadastrarPrato.php">Cadastrar Prato</a>
+        <br>
+        <?phpinclude "listarPrato.php";?>
         <br>
         <h2> Cardápio do Dia</h2>
             <table>

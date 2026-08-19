@@ -1,5 +1,15 @@
 <?php
 include "../infra/conexao.php";
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$nome = $_POST["nome"];
+$email = $_POST["email"];
+
+$sql = "INSERT INTO usuario(nome, email) VALUES('$nome','$email')";
+mysqli_query($conexao, $sql);
+
+echo $nome;
+}
 ?>
 
 <html lang="en">
@@ -12,13 +22,15 @@ include "../infra/conexao.php";
     <main>
         <a href="menuPrincipal.php">Voltar para tela principal</a>
     </main>
-    <form action="POST">
-
-        <input type="text"> 
+    <form action="" method="POST">
+        
+        <label for="nome">Nome:</label>
         <br>
-        <input type="text"> 
+        <input type="text" id="nome" name="nome"> 
         <br>
-        <input type="text"> 
+        <label for="email">E-mail:</label>
+        <br>
+        <input type="text" id="email" name="email"> 
         
        <br> 
        <button type="submit"> Enviar </button> 

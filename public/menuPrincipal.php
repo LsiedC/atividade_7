@@ -64,7 +64,12 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
                 <td> <?php echo $prato["nomePrato"] ?></td>
                 <td> <?php echo $prato["preco"] ?></td>
                 <td> <?php echo $prato["categoria"] ?></td>
-
+                
+                <td>
+                     <a href="editarPrato.php?id=<?php echo $prato["idPrato"] ?>">Editar</a>
+                     <a href="excluirPrato.php?id=<?php echo $prato["idPrato"] ?>">Excluir</a>
+               </td>
+                
             </tr>
 
             <?php } ?>

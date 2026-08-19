@@ -31,10 +31,10 @@ mysqli_query($conexao, $sql);
         <br>
         <input type="text" id = "preco" name = "preco"> 
         <br>
-        <select id ="categoria" name = "categoria">
-        <option value="Principal">Principal</option>
-        <option value="Sobremesa">Sobremesa</option>
-        <option value="Bebida">Bebida</option>
+        <select name="categoria" required>
+            <option value="principal">Prato Principal</option>
+            <option value="sobremesa">Sobremesa</option>
+            <option value="bebida">Bebida</option>
         </select>
 
        <br> 

@@ -1,7 +1,17 @@
 <?php
 include "../infra/conexao.php";
 
-$pratos = mysqli_query($conexao, "SELECT * FROM pratos");
+$pratos = mysqli_query($conexao, "
+    SELECT 
+        pratos.idPrato,
+        pratos.nomePrato,
+        pratos.preco,
+        pratos.categoria,
+        usuario.nome AS nomeUsuario
+    FROM pratos
+    INNER JOIN usuario 
+        ON pratos.idUser = usuario.idUser
+");
 $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
 
 ?>
@@ -20,10 +30,6 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
         <br>
         <a href="cadastrarPrato.php">Cadastrar Prato</a>
         <br>
-        <br>
-        <a href="listarPratoUsuario.php">Listar Pratos por Usuario</a>
-        <br>
-        <br>
         <?phpinclude "listarPrato.php";?>
         <br>
         <h2> Cardápio do Dia</h2>
@@ -35,6 +41,7 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
                 <th> Prato </th>
                 <th> Preço </th>
                 <th> Categoria </th>
+                <th> Usuário Cadastrado </th>
 
             </tr>
             <?php while($prato = mysqli_fetch_assoc($pratos)) { ?>
@@ -44,6 +51,7 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
                 <td> <?php echo $prato["nomePrato"] ?></td>
                 <td> <?php echo $prato["preco"] ?></td>
                 <td> <?php echo $prato["categoria"] ?></td>
+                <td> <?php echo $prato["nomeUsuario"] ?></td>
                 
                 <td>
                      <a href="editarPrato.php?id=<?php echo $prato["idPrato"] ?>">Editar</a>

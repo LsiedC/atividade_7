@@ -5,14 +5,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 $nomePrato = $_POST["nomePrato"];
 $preco = $_POST["preco"];
 $categoria = $_POST["categoria"];
+$idUser = $_POST["idUser"];
 
-$sql = "INSERT INTO pratos (nomePrato, preco, categoria) VALUES('?', '?','?')";
+
+$sql = "INSERT INTO pratos (nomePrato, preco, categoria, idUser) VALUES(?, ?, ?, ?)";
 
 $stmt = mysqli_prepare($conexao, $sql);
-mysqli_stmt_bind_param($stmt, "sss", $nomePrato, $preco, $categoria);
+mysqli_stmt_bind_param($stmt, "sssi", $nomePrato, $preco, $categoria, $idUser);
 mysqli_stmt_execute($stmt);
 mysqli_stmt_close($stmt);
 }
+
+$resultado = mysqli_query($conexao, "SELECT * FROM usuario");
 
 ?>
 
@@ -44,6 +48,21 @@ mysqli_stmt_close($stmt);
         <br>
 
        <br> 
+
+       <label for="idUser">Usuário relacionado:</label>
+       <br>
+       <select name="idUser" required>
+        <?php while ($usuario = mysqli_fetch_assoc($resultado)) { ?>
+
+           <option value="<?php echo $usuario['idUser']; ?>">
+            <?php echo $usuario['nome']; ?>
+            </option>
+
+            <?php } ?>
+
+        </select>
+        <br>
+
        <button type="submit"> Enviar </button> 
        <br>
        <a href="menuPrincipal.php">Voltar para tela principal</a>

@@ -10,6 +10,17 @@ mysqli_query($conexao, $sql);
 
 }
 
+if($_SERVER["REQUEST_METHOD"] == "POST"){
+$nomePrato = $_POST["nomePrato"];
+$preco = $_POST["preco"];
+$categoria = $_POST["categoria"];
+
+$sql = "INSERT INTO pratos (nomePrato, preco, categoria) VALUES('$nomePrato', '$preco', '$categoria')";
+
+mysqli_query($conexao, $sql);
+
+}
+$pratos = mysqli_query($conexao, "SELECT * FROM pratos");
 $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
 
 ?>
@@ -24,28 +35,74 @@ $resultado = mysqli_query($conexao, "SELECT * FROM usuario");
     <main>
         <h1>O que você deseja fazer? </h1>
         <h3>Cadastrar Usuario</h3>
-        <br>
             <form action="" method="POST">
             
             <label for="nome">Nome:</label>
 
             <br>
-            <input type="text" id="nome" name="nome" required> 
+            <input type="text" placeholder="Lucas" id="nome" name="nome" required> 
             <br>
 
             <label for="email">E-mail:</label>
 
             <br>
-            <input type="text" id="email" name="email" required> 
+            <input type="text" placeholder="venso@gmail" id="email" name="email" required> 
             <br> 
-
+            <br>
             <button type="submit"> Enviar </button> 
         </form>
 
         <br>
-        <a href="cadastrarPrato.php">Cadastrar Prato</a>
+        <h3>Cadastrar Prato</h3>
+            <form action="" method = "POST">
+
+            <label for="nomePrato">Nome:</label>
+            <br>
+            <input type="text" placeholder="Frango" id = "nomePrato" name= "nomePrato"> 
+            <br>
+            <label for="nomePrato">Preço:</label>
+            <br>
+            <input type="int" id = "preco" placeholder="99,99" name = "preco"> 
+            <br>
+            <label for="categoria">Tipo do prato:</label>
+            <br>
+            <select id ="categoria" name = "categoria">
+            <option value="Principal">Principal</option>
+            <option value="Sobremesa">Sobremesa</option>
+            <option value="Bebida">Bebida</option>
+            </select>
+            <br> 
+            <br>
+            <button type="submit"> Enviar </button> 
+            </form>
         <br>
+        
         <a href="listarPrato.php">Listar Pratos</a>
+        <br>
+        <h2> Cardápio do Dia</h2>
+            <table>
+
+            <tr>
+
+                <th> ID </th>
+                <th> Prato </th>
+                <th> Preço </th>
+                <th> Categoria </th>
+
+            </tr>
+            <?php while($prato = mysqli_fetch_assoc($pratos)) { ?>
+            <tr>
+
+                <td> <?php echo $prato["idPrato"] ?></td>
+                <td> <?php echo $prato["nomePrato"] ?></td>
+                <td> <?php echo $prato["preco"] ?></td>
+                <td> <?php echo $prato["categoria"] ?></td>
+
+            </tr>
+
+            <?php } ?>
+
+            </table>
         <br>
         <a href="listarPratoUsuario.php">Listar Pratos por Usuario</a>
         <br>

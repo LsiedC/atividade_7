@@ -8,7 +8,6 @@ $email = $_POST["email"];
 $sql = "INSERT INTO usuario(nome, email) VALUES('$nome','$email')";
 mysqli_query($conexao, $sql);
 
-echo $nome;
 }
 ?>
 
@@ -19,9 +18,7 @@ echo $nome;
     <title>Document</title>
 </head>
 <body>
-    <main>
-        <a href="menuPrincipal.php">Voltar para tela principal</a>
-    </main>
+    
     <form action="" method="POST">
         
         <label for="nome">Nome:</label>
@@ -30,10 +27,15 @@ echo $nome;
         <br>
         <label for="email">E-mail:</label>
         <br>
-        <input type="text" id="email" name="email"> 
+        <input type="text" id="email" name="email" required> 
         
        <br> 
        <button type="submit"> Enviar </button> 
+        <br>
+        <br>
+       <main>
+        <a href="menuPrincipal.php">Voltar para tela principal</a>
+    </main>
     </form>
 </body>
 </html>

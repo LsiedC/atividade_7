@@ -1,10 +1,9 @@
 <?php
 include "../infra/conexao.php";
 
-if($_SERVER['REQUEST_METHOD'] === 'POST'){
-    $nomePrato = $_POST['nomePrato'];
-    $categoria = $_POST['categoria'];
-}
+$nomePrato = $_POST["nomePrato"];
+$preco = $_POST["preco"];
+$categoria = $_POST["categoria"];
 
 ?>
 
@@ -22,6 +21,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     <form action="" method = "POST">
 
         <input type="text" name = "nomePrato"> 
+        <br>
+        <input type="text" name = "preco"> 
         <br>
         <select name="categoria" id="">
         <option value="Principal">Principal</option>
